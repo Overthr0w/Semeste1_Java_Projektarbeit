@@ -9,9 +9,9 @@ public class InventorySystem {
     }
 
     public void initObjekte() {
-        bags.add(new Bag("red", 1.0, false, 4.99));
-        bags.add(new Bag("green", 0.8, true, 14.99));
-        bags.add(new Bag("blue", 0.5, false, 9.99));
+        bags.add(new Bag("Rot", 1.0, false, 4.99));
+        bags.add(new Bag("Grün", 0.8, true, 14.99));
+        bags.add(new Bag("Blau", 0.5, false, 9.99));
     }
 
     public  List<Bag> filterColor(String color) {

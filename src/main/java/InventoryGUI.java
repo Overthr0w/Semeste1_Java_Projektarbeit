@@ -22,18 +22,18 @@ public class InventoryGUI extends JFrame{
         setSize(300, 150);
         setContentPane(myPanel);
         setVisible(true);
-        // Einmaliges Initialisieren der InventorySystem Klasse
+        // One-time initialization of InventorySystem class
         inv = new InventorySystem();
         inv.initObjekte();
     }
 
-    // nimmt die Objekte aus der ArrayList und stellt diese in der Listenansicht rechts dar.
-    // muss nach dem Erstellen oder Filtern neu aufgerufen werden.
+    // takes objects from ArrayList and displays them in the itemList on the right side.
+    // has to be called each time when the 'Hinzufügen' or 'Filtern' button is pressed.
     private void updateList(ArrayList<Bag> objects) {
         // TODO: https://stackoverflow.com/questions/16214480/adding-elements-to-a-jlist
-        // find out what components are, regarding JList
         for (Bag b : inv.getBags()) {
             continue;
+            // TODO: find out what components are, regarding JList
             //itemList.add(b);
         }
     }

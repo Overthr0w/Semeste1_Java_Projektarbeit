@@ -4,11 +4,11 @@ public class Bag {
     private boolean isVegan;
     private double price;
 
-    public Bag(String farbe, double weight, boolean isVegan, double preis) {
-        this.color = farbe;
+    public Bag(String color, double weight, boolean isVegan, double price) {
+        this.color = color;
         this.weight = weight;
         this.isVegan = isVegan;
-        this.price = preis;
+        this.price = price;
     }
 
     // Setter and Getter methods
