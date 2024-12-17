@@ -28,9 +28,7 @@ public class Bag {
         this.weight = weight;
     }
 
-    public boolean isVegan() {
-        return isVegan;
-    }
+    public boolean isVegan() {return isVegan;}
 
     public void setVegan(boolean vegan) {
         this.isVegan = vegan;

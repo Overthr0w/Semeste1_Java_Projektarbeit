@@ -22,7 +22,41 @@ public class InventorySystem {
             }
         }
         return filteredBags;
+
     }
+    public List<Bag> filterWeight(Double weight) {
+        List<Bag> filteredBags = new ArrayList<Bag>();
+        for (Bag a : bags) {
+            if (a.getWeight() == weight) {
+                filteredBags.add(a);
+            }
+        }
+        return filteredBags;
+    }
+    public List<Bag> filterisVegan(Boolean isVegan) {
+        List<Bag> filteredBags = new ArrayList<Bag>();
+        for (Bag c : bags) {
+            if (c.isVegan() == isVegan){
+                filteredBags.add(c);
+            }
+        }
+        return filteredBags;
+    }
+
+    public List<Bag> filterPrice(Double price ) {
+        List<Bag> filteredBags = new ArrayList<Bag>();
+        for (Bag a : bags) {
+            if (a.getPrice() == price) {
+                filteredBags.add(a);
+            }
+        }
+        return filteredBags;
+    }
+
+
+
+
+    // TODO: 1-2 new Attributes like brand and adding new Bag examples
     // TODO: 3 more filters for weight, isVegan and price.
     // TODO(optional): 2 more filter methods for the price (returning bags that are cheaper or more expensive than the specified price)
 
