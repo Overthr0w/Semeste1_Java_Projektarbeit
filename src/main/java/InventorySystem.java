@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-import java.util.List;
+import java.util.ArrayList;
 
 public class InventorySystem {
     private final ArrayList<Bag> bags = new ArrayList<Bag>();
@@ -14,8 +14,8 @@ public class InventorySystem {
         bags.add(new Bag("Blau", 0.5, false, 9.99));
     }
 
-    // takes a color and a list of bags as arguments
-    // returns only the bags in the list that had the color specified in the argument
+    // takes a color and a ArrayList of bags as arguments
+    // returns only the bags in the ArrayList that had the color specified in the argument
     public  ArrayList<Bag> filterColor(String color, ArrayList<Bag> bags) {
         ArrayList<Bag> filteredBags = new ArrayList<Bag>();
         for (Bag b : bags) {
@@ -25,8 +25,8 @@ public class InventorySystem {
         }
         return filteredBags;
     }
-    public List<Bag> filterWeight(Double weight) {
-        List<Bag> filteredBags = new ArrayList<Bag>();
+    public ArrayList<Bag> filterWeight(Double weight) {
+        ArrayList<Bag> filteredBags = new ArrayList<Bag>();
         for (Bag a : bags) {
             if (a.getWeight() == weight) {
                 filteredBags.add(a);
@@ -34,8 +34,8 @@ public class InventorySystem {
         }
         return filteredBags;
     }
-    public List<Bag> filterisVegan(Boolean isVegan) {
-        List<Bag> filteredBags = new ArrayList<Bag>();
+    public ArrayList<Bag> filterisVegan(Boolean isVegan) {
+        ArrayList<Bag> filteredBags = new ArrayList<Bag>();
         for (Bag c : bags) {
             if (c.isVegan() == isVegan){
                 filteredBags.add(c);
@@ -44,8 +44,8 @@ public class InventorySystem {
         return filteredBags;
     }
 
-    public List<Bag> filterPrice(Double price ) {
-        List<Bag> filteredBags = new ArrayList<Bag>();
+    public ArrayList<Bag> filterPrice(Double price ) {
+        ArrayList<Bag> filteredBags = new ArrayList<Bag>();
         for (Bag a : bags) {
             if (a.getPrice() == price) {
                 filteredBags.add(a);
