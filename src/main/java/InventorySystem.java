@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class InventorySystem {
-    private final List<Bag> bags = new ArrayList<Bag>();
+    private final ArrayList<Bag> bags = new ArrayList<Bag>();
 
     public InventorySystem() {
         initObjekte();
@@ -14,15 +14,16 @@ public class InventorySystem {
         bags.add(new Bag("Blau", 0.5, false, 9.99));
     }
 
-    public  List<Bag> filterColor(String color) {
-        List<Bag> filteredBags = new ArrayList<Bag>();
+    // takes a color and a list of bags as arguments
+    // returns only the bags in the list that had the color specified in the argument
+    public  ArrayList<Bag> filterColor(String color, ArrayList<Bag> bags) {
+        ArrayList<Bag> filteredBags = new ArrayList<Bag>();
         for (Bag b : bags) {
             if (b.getColor().equals(color)) {
                 filteredBags.add(b);
             }
         }
         return filteredBags;
-
     }
     public List<Bag> filterWeight(Double weight) {
         List<Bag> filteredBags = new ArrayList<Bag>();
@@ -69,7 +70,7 @@ public class InventorySystem {
         return bags.remove(bag);
     }
 
-    public List<Bag> getBags() {
+    public ArrayList<Bag> getBags() {
         return bags;
     }
 }
