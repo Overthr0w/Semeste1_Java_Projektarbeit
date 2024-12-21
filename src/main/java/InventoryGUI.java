@@ -82,9 +82,9 @@ public class InventoryGUI extends JFrame{
         createButton.addActionListener(_ -> addBag());
         filterButton.addActionListener(_ -> {
             ArrayList<Bag> filtered = inv.filterColor(getInputColor(), inv.getBags());
-            // filtered = inv.filterWeight(getInputWeight(), filtered);
-            // filtered = inv.filterPrice(getInputPrice(), filtered);
-            // filtered = inv.filterVegan(getInputVegan(), filtered);
+            filtered = inv.filterWeight(getInputWeight(), filtered);
+            filtered = inv.filterPrice(getInputPrice(), filtered);
+            filtered = inv.filterVegan(getInputVegan(), filtered);
             updateList(filtered);
         });
     }

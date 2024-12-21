@@ -1,8 +1,7 @@
 import java.util.ArrayList;
-import java.util.ArrayList;
 
 public class InventorySystem {
-    private final ArrayList<Bag> bags = new ArrayList<Bag>();
+    private final ArrayList<Bag> bags = new ArrayList<>();
 
     public InventorySystem() {
         initObjekte();
@@ -14,10 +13,9 @@ public class InventorySystem {
         bags.add(new Bag("Blau", 0.5, false, 9.99));
     }
 
-    // takes a color and a ArrayList of bags as arguments
-    // returns only the bags in the ArrayList that had the color specified in the argument
+    // returns an array list containing bags that have the specified color
     public  ArrayList<Bag> filterColor(String color, ArrayList<Bag> bags) {
-        ArrayList<Bag> filteredBags = new ArrayList<Bag>();
+        ArrayList<Bag> filteredBags = new ArrayList<>();
         for (Bag b : bags) {
             if (b.getColor().equals(color)) {
                 filteredBags.add(b);
@@ -25,8 +23,8 @@ public class InventorySystem {
         }
         return filteredBags;
     }
-    public ArrayList<Bag> filterWeight(Double weight) {
-        ArrayList<Bag> filteredBags = new ArrayList<Bag>();
+    public ArrayList<Bag> filterWeight(Double weight, ArrayList<Bag> bags) {
+        ArrayList<Bag> filteredBags = new ArrayList<>();
         for (Bag a : bags) {
             if (a.getWeight() == weight) {
                 filteredBags.add(a);
@@ -34,8 +32,8 @@ public class InventorySystem {
         }
         return filteredBags;
     }
-    public ArrayList<Bag> filterisVegan(Boolean isVegan) {
-        ArrayList<Bag> filteredBags = new ArrayList<Bag>();
+    public ArrayList<Bag> filterVegan(Boolean isVegan, ArrayList<Bag> bags) {
+        ArrayList<Bag> filteredBags = new ArrayList<>();
         for (Bag c : bags) {
             if (c.isVegan() == isVegan){
                 filteredBags.add(c);
@@ -44,8 +42,8 @@ public class InventorySystem {
         return filteredBags;
     }
 
-    public ArrayList<Bag> filterPrice(Double price ) {
-        ArrayList<Bag> filteredBags = new ArrayList<Bag>();
+    public ArrayList<Bag> filterPrice(Double price, ArrayList<Bag> bags) {
+        ArrayList<Bag> filteredBags = new ArrayList<>();
         for (Bag a : bags) {
             if (a.getPrice() == price) {
                 filteredBags.add(a);
@@ -53,13 +51,6 @@ public class InventorySystem {
         }
         return filteredBags;
     }
-
-
-
-
-    // TODO: 1-2 new Attributes like brand and adding new Bag examples
-    // TODO: 3 more filters for weight, isVegan and price.
-    // TODO(optional): 2 more filter methods for the price (returning bags that are cheaper or more expensive than the specified price)
 
     // Setter and Getter methods
     public void addBag(String color, double weight, boolean isVegan, double price) {
