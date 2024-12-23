@@ -4,7 +4,8 @@ import java.util.Objects;
 
 public class InventoryGUI extends JFrame{
     private JPanel myPanel;
-    private JList itemList;
+    private final DefaultListModel<String> model = new DefaultListModel<>();
+    private JList<String> itemList = new JList<>( model );
     private JScrollPane scrollPane;
     private JComboBox comboBoxColor;
     private JLabel colorLabel;
@@ -20,12 +21,13 @@ public class InventoryGUI extends JFrame{
     public InventoryGUI() {
         setTitle("Inventar Management System");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(300, 150);
+        setSize(320, 260);
         setContentPane(myPanel);
         setVisible(true);
         // One-time initialization of InventorySystem class
         inv = new InventorySystem();
         inv.initObjekte();
+        updateList(inv.getBags());
         initListeners();
     }
 
@@ -35,7 +37,7 @@ public class InventoryGUI extends JFrame{
         // TODO: https://stackoverflow.com/questions/16214480/adding-elements-to-a-jlist
         for (Bag b : inv.getBags()) {
             // TODO: find out what components are, regarding JList
-            //itemList.add(b);
+            model.addElement(b.getColor() + " " + b.getWeight() + " " + b.getPrice());
         }
     }
 

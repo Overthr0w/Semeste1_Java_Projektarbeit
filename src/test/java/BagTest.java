@@ -1,16 +1,17 @@
-import java.awt.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 class BagTest {
+    Bag testBag = new Bag("schwarz", 10.0, false, 14.99);
     // TODO: add tests to the setters/getters (one assertion for each should be enough)
     @org.junit.jupiter.api.Test
     void getColor() {
-        System.out.println("Farbe der Tasche: " + Bag.class.newInstance().getColor());
+        assertEquals(testBag.getColor(), "schwarz");
     }
 
     @org.junit.jupiter.api.Test
     void setColor() {
-        Bag.class.newInstance().setColor() = ("dunkelrot");
-        System.out.println("neue Farbe: " + Bag.class.newInstance().setColor());
+        testBag.setColor("dunkelrot");
+        assertEquals(testBag.getColor(), "dunkelrot");
     }
     @org.junit.jupiter.api.Test
     void getWeight() {
