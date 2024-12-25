@@ -64,5 +64,13 @@ public class InventorySystem {
     public ArrayList<Bag> getBags() {
         return bags;
     }
+
+    public static String[] toStringArray(ArrayList<Bag> bags) {
+        String[] stringArray = new String[bags.size()];
+        for (int i = 0; i < bags.size(); i++) {
+            stringArray[i] = bags.get(i).toString();
+        }
+        return stringArray;
+    }
 }
 

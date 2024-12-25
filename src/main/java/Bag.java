@@ -41,4 +41,8 @@ public class Bag {
     public void setPrice(double price) {
         this.price = price;
     }
+
+    public String toString() {
+        return String.format("%s %.2f kg %.2f € Vegan: %b\n", this.color, this.weight, this.price, this.isVegan);
+    }
 }

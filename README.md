@@ -9,5 +9,4 @@ Sie Ihr Projekt, die Projektstruktur und die Nutzung Ihres Programms beschreiben
 
 ### GUI Design
 Man gibt die Werte ein und kann durch diese die Objekte entweder filtern oder ein neues Objekt erstellen.
-Der `Hinzufügen` Button ist erst dann auswählbar, wenn in jedem Feld (außer vegan) ein Wert drin steht.
 Um ein neues Objekt hinzufügen zu können, müssen alle Werte gültig sein (gewicht und preis müssen in ein double konvertierbar sein). 
