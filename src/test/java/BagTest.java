@@ -9,7 +9,11 @@ class BagTest {
     }
 
     @org.junit.jupiter.api.Test
-    void setColor() {}
+    void setColor() {
+        testBag.setColor("magenta");
+        assertEquals(testBag.getColor(), "magenta");
+
+    }
 
     @org.junit.jupiter.api.Test
     void getWeight() {
@@ -17,15 +21,21 @@ class BagTest {
     }
 
     @org.junit.jupiter.api.Test
-    void setWeight() {}
-
-    @org.junit.jupiter.api.Test
-    void isVegan() {
-        assertEquals(false, testBag.isVegan());
+    void setWeight() {
+        testBag.setWeight(10.23);
+        assertEquals(testBag.getWeight(),10.23);
     }
 
     @org.junit.jupiter.api.Test
-    void setVegan() {}
+    void isVegan() {
+        assertEquals(false ,testBag.isVegan());
+    }
+
+    @org.junit.jupiter.api.Test
+    void setVegan() {
+        testBag.setVegan(true);
+        assertEquals(testBag.isVegan(), true);
+    }
 
     @org.junit.jupiter.api.Test
     void getPrice() {
@@ -33,5 +43,8 @@ class BagTest {
     }
 
     @org.junit.jupiter.api.Test
-    void setPrice() {}
+    void setPrice() {
+        testBag.setPrice(24.99);
+        assertEquals(testBag.getPrice(), 24.99);
+    }
 }
