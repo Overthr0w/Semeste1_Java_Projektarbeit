@@ -1,4 +1,6 @@
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -19,6 +21,9 @@ public class InventoryGUI extends JFrame {
     private JButton filterWeightButton;
     private JButton filterPriceButton;
     private JButton filterVeganButton;
+    private JButton gewichtButton;
+    private JButton preisButton;
+    private JComboBox comboBoxRichtung;
     private final InventorySystem inv;
 
     public InventoryGUI() {
@@ -36,6 +41,7 @@ public class InventoryGUI extends JFrame {
 
         updateList(inv.getBags());
         initListeners();
+
 
     }
 
@@ -100,6 +106,13 @@ public class InventoryGUI extends JFrame {
         return checkBoxVegan.isSelected();
     }
 
+    private boolean getAsc() {
+        if (comboBoxRichtung.getSelectedItem().toString().equals("Aufsteigend")) {
+            return true;
+        }
+        return false;
+    }
+
     private void initListeners () {
         createButton.addActionListener(_ -> addBag());
         filterColorButton.addActionListener(_ -> {
@@ -118,5 +131,11 @@ public class InventoryGUI extends JFrame {
             }
         });
         filterVeganButton.addActionListener(_ -> updateList(inv.filterVegan(getInputVegan(), inv.getBags())));
+        preisButton.addActionListener(_ -> {
+            updateList(inv.orderByPrice(inv.getBags(), getAsc()));
+        });
+        gewichtButton.addActionListener(_ -> {
+            updateList(inv.orderByWeight(inv.getBags(), getAsc()));
+        });
     }
 }

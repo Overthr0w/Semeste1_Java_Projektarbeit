@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="InventoryGUI">
-  <grid id="27dc6" binding="myPanel" layout-manager="GridLayoutManager" row-count="11" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+  <grid id="27dc6" binding="myPanel" layout-manager="GridLayoutManager" row-count="11" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
       <xy x="20" y="20" width="1111" height="431"/>
@@ -10,7 +10,7 @@
     <children>
       <scrollpane id="719c9" binding="scrollPane">
         <constraints>
-          <grid row="0" column="2" row-span="10" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <grid row="0" column="3" row-span="10" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties/>
         <border type="none"/>
@@ -26,7 +26,7 @@
       </scrollpane>
       <component id="6f28e" class="javax.swing.JLabel" binding="colorLabel">
         <constraints>
-          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="0" anchor="10" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="1" hsize-policy="0" anchor="10" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <enabled value="true"/>
@@ -36,7 +36,7 @@
       </component>
       <component id="ffcdc" class="javax.swing.JComboBox" binding="comboBoxColor">
         <constraints>
-          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="2" anchor="9" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="1" column="0" row-span="1" col-span="2" vsize-policy="1" hsize-policy="2" anchor="9" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <editable value="true"/>
@@ -55,7 +55,7 @@
       </component>
       <component id="7ff3a" class="javax.swing.JLabel" binding="weightLabel">
         <constraints>
-          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="0" anchor="10" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="2" column="0" row-span="1" col-span="2" vsize-policy="1" hsize-policy="0" anchor="10" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <text value="Gewicht"/>
@@ -64,7 +64,7 @@
       </component>
       <component id="4cd4f" class="javax.swing.JTextField" binding="textFieldWeight">
         <constraints>
-          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="9" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="3" column="0" row-span="1" col-span="2" vsize-policy="1" hsize-policy="6" anchor="9" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <text value=""/>
@@ -73,7 +73,7 @@
       </component>
       <component id="a4be3" class="javax.swing.JLabel" binding="priceLabel">
         <constraints>
-          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="0" anchor="10" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="4" column="0" row-span="1" col-span="2" vsize-policy="1" hsize-policy="0" anchor="10" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <text value="Preis"/>
@@ -82,7 +82,7 @@
       </component>
       <component id="19602" class="javax.swing.JTextField" binding="textFieldPrice">
         <constraints>
-          <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="9" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="5" column="0" row-span="1" col-span="2" vsize-policy="1" hsize-policy="6" anchor="9" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <toolTipText value="Geben Sie den Preis in Kilogramm an. Bitte beachten Sie, dass dabei Punkte anstelle von Kommas verwendet werden müssen."/>
@@ -90,7 +90,7 @@
       </component>
       <component id="1ba77" class="javax.swing.JCheckBox" binding="checkBoxVegan">
         <constraints>
-          <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="6" column="0" row-span="1" col-span="2" vsize-policy="1" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <selected value="false"/>
@@ -99,7 +99,7 @@
       </component>
       <component id="752aa" class="javax.swing.JButton" binding="createButton">
         <constraints>
-          <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="1" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="7" column="0" row-span="1" col-span="2" vsize-policy="1" hsize-policy="1" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <contentAreaFilled value="true"/>
@@ -115,12 +115,12 @@
       </vspacer>
       <hspacer id="1aa1d">
         <constraints>
-          <grid row="10" column="2" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="10" column="3" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
       </hspacer>
       <component id="67b7c" class="javax.swing.JButton" binding="filterColorButton">
         <constraints>
-          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <text value="Filtern"/>
@@ -128,7 +128,7 @@
       </component>
       <component id="a65b6" class="javax.swing.JButton" binding="filterWeightButton">
         <constraints>
-          <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <text value="Filtern"/>
@@ -136,7 +136,7 @@
       </component>
       <component id="6b2bd" class="javax.swing.JButton" binding="filterPriceButton">
         <constraints>
-          <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="5" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <text value="Filtern"/>
@@ -144,10 +144,37 @@
       </component>
       <component id="c6a72" class="javax.swing.JButton" binding="filterVeganButton">
         <constraints>
-          <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="6" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <text value="Filtern"/>
+        </properties>
+      </component>
+      <component id="5ef7b" class="javax.swing.JButton" binding="gewichtButton" default-binding="true">
+        <constraints>
+          <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Gewicht"/>
+        </properties>
+      </component>
+      <component id="a7055" class="javax.swing.JButton" binding="preisButton">
+        <constraints>
+          <grid row="8" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Preis"/>
+        </properties>
+      </component>
+      <component id="3a53a" class="javax.swing.JComboBox" binding="comboBoxRichtung">
+        <constraints>
+          <grid row="8" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <model>
+            <item value="Aufsteigend"/>
+            <item value="Absteigend"/>
+          </model>
         </properties>
       </component>
     </children>
