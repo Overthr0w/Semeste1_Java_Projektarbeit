@@ -2,12 +2,14 @@ import java.util.ArrayList;
 
 public class InventorySystem {
     private final ArrayList<Bag> bags = new ArrayList<>();
+    // contains the bags, which are displayed in the list
     private final ArrayList<Bag> listedBags = new ArrayList<>();
 
     public InventorySystem() {
         initObjekte();
     }
 
+    // creates some example bags
     public void initObjekte() {
         bags.add(new Bag("Rot", 1.0, false, 4.99));
         bags.add(new Bag("Grün", 0.8, true, 14.99));
@@ -19,6 +21,7 @@ public class InventorySystem {
     public ArrayList<Bag> filterColor(String color) {
         ArrayList<Bag> filteredBags = new ArrayList<>();
         for (Bag b : bags) {
+            // checks if color from b equals the color prameter
             if (b.getColor().equals(color)) {
                 filteredBags.add(b);
             }
@@ -26,6 +29,7 @@ public class InventorySystem {
         this.setSelectedBags(filteredBags);
         return filteredBags;
     }
+    // same as filterColor
     public ArrayList<Bag> filterWeight(Double weight) {
         ArrayList<Bag> filteredBags = new ArrayList<>();
         for (Bag a : bags) {

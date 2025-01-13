@@ -44,14 +44,6 @@ public class InventoryGUI extends JFrame {
 
         updateList(inv.getBags());
         initListeners();
-
-
-        priceSumButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                textFieldPriceSum.setText(String.format("%.2f €", inv.calcSum()));
-            }
-        });
     }
 
     // takes objects from ArrayList and displays them in the itemList on the right side.
@@ -146,5 +138,7 @@ public class InventoryGUI extends JFrame {
         gewichtButton.addActionListener(_ -> {
             updateList(inv.orderByWeight(inv.getBags(), getAsc()));
         });
+        priceSumButton.addActionListener(_ -> textFieldPriceSum.setText(String.format("%.2f €", inv.calcSum())));
+
     }
 }
