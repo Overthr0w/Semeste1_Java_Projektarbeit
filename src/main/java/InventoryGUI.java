@@ -24,6 +24,9 @@ public class InventoryGUI extends JFrame {
     private JButton gewichtButton;
     private JButton preisButton;
     private JComboBox comboBoxRichtung;
+    private JButton priceSumButton;
+    private JTextField textFieldPriceSum;
+    private JLabel priceSumLabel;
     private final InventorySystem inv;
 
     public InventoryGUI() {
@@ -43,6 +46,12 @@ public class InventoryGUI extends JFrame {
         initListeners();
 
 
+        priceSumButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                textFieldPriceSum.setText(String.format("%.2f €", inv.calcSum()));
+            }
+        });
     }
 
     // takes objects from ArrayList and displays them in the itemList on the right side.
@@ -117,20 +126,20 @@ public class InventoryGUI extends JFrame {
         createButton.addActionListener(_ -> addBag());
         filterColorButton.addActionListener(_ -> {
             if (!getInputColor().isEmpty()) {
-                updateList(inv.filterColor(getInputColor(), inv.getBags()));
+                updateList(inv.filterColor(getInputColor()));
             }
         });
         filterWeightButton.addActionListener(_ -> {
             if (getInputWeight() != -1) {
-                updateList(inv.filterWeight(getInputWeight(), inv.getBags()));
+                updateList(inv.filterWeight(getInputWeight()));
             }
         });
         filterPriceButton.addActionListener(_ -> {
             if (getInputPrice() != -1) {
-                updateList(inv.filterPrice(getInputPrice(), inv.getBags()));
+                updateList(inv.filterPrice(getInputPrice()));
             }
         });
-        filterVeganButton.addActionListener(_ -> updateList(inv.filterVegan(getInputVegan(), inv.getBags())));
+        filterVeganButton.addActionListener(_ -> updateList(inv.filterVegan(getInputVegan())));
         preisButton.addActionListener(_ -> {
             updateList(inv.orderByPrice(inv.getBags(), getAsc()));
         });

@@ -2,6 +2,7 @@ import java.util.ArrayList;
 
 public class InventorySystem {
     private final ArrayList<Bag> bags = new ArrayList<>();
+    private final ArrayList<Bag> listedBags = new ArrayList<>();
 
     public InventorySystem() {
         initObjekte();
@@ -11,44 +12,49 @@ public class InventorySystem {
         bags.add(new Bag("Rot", 1.0, false, 4.99));
         bags.add(new Bag("Grün", 0.8, true, 14.99));
         bags.add(new Bag("Blau", 0.5, false, 9.99));
+        listedBags.addAll(bags);
     }
 
     // returns an array list containing bags that have the specified color
-    public  ArrayList<Bag> filterColor(String color, ArrayList<Bag> bags) {
+    public ArrayList<Bag> filterColor(String color) {
         ArrayList<Bag> filteredBags = new ArrayList<>();
         for (Bag b : bags) {
             if (b.getColor().equals(color)) {
                 filteredBags.add(b);
             }
         }
+        this.setSelectedBags(filteredBags);
         return filteredBags;
     }
-    public ArrayList<Bag> filterWeight(Double weight, ArrayList<Bag> bags) {
+    public ArrayList<Bag> filterWeight(Double weight) {
         ArrayList<Bag> filteredBags = new ArrayList<>();
         for (Bag a : bags) {
             if (a.getWeight() == weight) {
                 filteredBags.add(a);
             }
         }
+        this.setSelectedBags(filteredBags);
         return filteredBags;
     }
-    public ArrayList<Bag> filterVegan(Boolean isVegan, ArrayList<Bag> bags) {
+    public ArrayList<Bag> filterVegan(Boolean isVegan) {
         ArrayList<Bag> filteredBags = new ArrayList<>();
         for (Bag c : bags) {
             if (c.isVegan() == isVegan){
                 filteredBags.add(c);
             }
         }
+        this.setSelectedBags(filteredBags);
         return filteredBags;
     }
 
-    public ArrayList<Bag> filterPrice(Double price, ArrayList<Bag> bags) {
+    public ArrayList<Bag> filterPrice(Double price) {
         ArrayList<Bag> filteredBags = new ArrayList<>();
         for (Bag a : bags) {
             if (a.getPrice() == price) {
                 filteredBags.add(a);
             }
         }
+        this.setSelectedBags(filteredBags);
         return filteredBags;
     }
 
@@ -65,6 +71,15 @@ public class InventorySystem {
         return bags;
     }
 
+    public ArrayList<Bag> getSelectedBags() {
+        return listedBags;
+    }
+
+    public void setSelectedBags(ArrayList<Bag> listedBags) {
+        this.listedBags.clear();
+        this.listedBags.addAll(listedBags);
+    }
+
     public static String[] toStringArray(ArrayList<Bag> bags) {
         String[] stringArray = new String[bags.size()];
         for (int i = 0; i < bags.size(); i++) {
@@ -72,7 +87,7 @@ public class InventorySystem {
         }
         return stringArray;
     }
-    public ArrayList<Bag> orderByPrice (ArrayList<Bag> bags, boolean isAsc) {
+    public static ArrayList<Bag> orderByPrice (ArrayList<Bag> bags, boolean isAsc) {
         ArrayList<Bag> orderedBags = bags;
         Bag buffer;
         if (isAsc) {
@@ -83,7 +98,7 @@ public class InventorySystem {
                 buffer = bags.get(i);
                 bags.set(i, bags.get(i + 1));
                 bags.set(i+1, buffer);
-                orderByPrice(bags,isAsc);
+                orderByPrice(bags, true);
             }
         }
         else {
@@ -94,13 +109,13 @@ public class InventorySystem {
                 buffer = bags.get(i);
                 bags.set(i, bags.get(i + 1));
                 bags.set(i+1, buffer);
-                orderByPrice(bags,isAsc);
+                orderByPrice(bags, false);
             }
         }
         return orderedBags;
     }
 
-    public ArrayList<Bag> orderByWeight (ArrayList<Bag> bags, boolean isAsc) {
+    public static ArrayList<Bag> orderByWeight (ArrayList<Bag> bags, boolean isAsc) {
         ArrayList<Bag> orderedBags = bags;
         Bag buffer;
         if (isAsc) {
@@ -111,7 +126,7 @@ public class InventorySystem {
                 buffer = bags.get(i);
                 bags.set(i, bags.get(i + 1));
                 bags.set(i+1, buffer);
-                orderByWeight(bags,isAsc);
+                orderByWeight(bags, true);
             }
         }
         else {
@@ -122,12 +137,19 @@ public class InventorySystem {
                 buffer = bags.get(i);
                 bags.set(i, bags.get(i + 1));
                 bags.set(i+1, buffer);
-                orderByWeight(bags,isAsc);
+                orderByWeight(bags, false);
             }
         }
         return orderedBags;
     }
 
+    public double calcSum() {
+        double sum = 0;
+        for (Bag b : this.listedBags) {
+            sum += b.getPrice();
+        }
+        return sum;
+    }
 
 
 }
