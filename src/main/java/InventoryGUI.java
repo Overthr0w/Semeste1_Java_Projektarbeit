@@ -34,7 +34,7 @@ public class InventoryGUI extends JFrame {
 
         setTitle("Inventar Management System");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(480, 300);
+        setSize(480, 320);
         setContentPane(myPanel);
 
         itemList.setVisibleRowCount(6);
