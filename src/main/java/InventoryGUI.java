@@ -54,10 +54,10 @@ public class InventoryGUI extends JFrame {
         });
     }
 
-    // takes objects from ArrayList and displays them in the itemList on the right side.
+    // takes bags from ArrayList and displays them in the itemList on the right side.
     // must be called each time when the 'Hinzufügen' or 'Filtern' button is pressed.
-    public void updateList(ArrayList<Bag> objects) {
-        itemList.setListData(InventorySystem.toStringArray(objects));
+    private void updateList(ArrayList<Bag> bags) {
+        itemList.setListData(InventorySystem.toStringArray(bags));
     }
 
     // add bag on inventory
@@ -115,6 +115,7 @@ public class InventoryGUI extends JFrame {
         return checkBoxVegan.isSelected();
     }
 
+    // returns whether 'Aufsteigen' is selected in comboBoxRichtung or not
     private boolean getAsc() {
         if (comboBoxRichtung.getSelectedItem().toString().equals("Aufsteigend")) {
             return true;
