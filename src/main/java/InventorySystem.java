@@ -8,6 +8,7 @@ public class InventorySystem {
         initObjekte();
     }
 
+    // is used in the InventoryGUI classes updateList() method
     public static String[] toStringArray(ArrayList<Bag> bags) {
         String[] stringArray = new String[bags.size()];
         for (int i = 0; i < bags.size(); i++) {
@@ -17,7 +18,6 @@ public class InventorySystem {
     }
 
     public static ArrayList<Bag> orderByPrice(ArrayList<Bag> bags, boolean isAsc) {
-        ArrayList<Bag> orderedBags = bags;
         Bag buffer;
         if (isAsc) {
             for (int i = 0; i < bags.size() - 1; i++) {
@@ -40,11 +40,10 @@ public class InventorySystem {
                 orderByPrice(bags, false);
             }
         }
-        return orderedBags;
+        return bags;
     }
 
     public static ArrayList<Bag> orderByWeight(ArrayList<Bag> bags, boolean isAsc) {
-        ArrayList<Bag> orderedBags = bags;
         Bag buffer;
         if (isAsc) {
             for (int i = 0; i < bags.size() - 1; i++) {
@@ -67,7 +66,7 @@ public class InventorySystem {
                 orderByWeight(bags, false);
             }
         }
-        return orderedBags;
+        return bags;
     }
 
     public void initObjekte() {

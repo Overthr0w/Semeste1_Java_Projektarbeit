@@ -13,21 +13,20 @@ public class InventoryGUI extends JFrame {
     private JLabel colorLabel;
     private JLabel weightLabel;
     private JLabel priceLabel;
+    private JLabel priceSumLabel;
     private JTextField textFieldWeight;
     private JTextField textFieldPrice;
     private JCheckBox checkBoxVegan;
     private JButton createButton;
-    private JButton filterButton;
     private JButton filterColorButton;
     private JButton filterWeightButton;
     private JButton filterPriceButton;
     private JButton filterVeganButton;
-    private JButton gewichtButton;
-    private JButton preisButton;
+    private JButton weightButton;
+    private JButton priceButton;
     private JComboBox comboBoxRichtung;
     private JButton priceSumButton;
     private JTextField textFieldPriceSum;
-    private JLabel priceSumLabel;
 
     public InventoryGUI() {
         inv = new InventorySystem(); // One-time initialization of InventorySystem class
@@ -44,14 +43,6 @@ public class InventoryGUI extends JFrame {
 
         updateList(inv.getBags());
         initListeners();
-
-
-        priceSumButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                textFieldPriceSum.setText(String.format("%.2f €", inv.calcSum()));
-            }
-        });
     }
 
     // takes bags from ArrayList and displays them in the itemList on the right side.
@@ -117,7 +108,7 @@ public class InventoryGUI extends JFrame {
 
     // returns whether 'Aufsteigen' is selected in comboBoxRichtung or not
     private boolean getAsc() {
-        return comboBoxRichtung.getSelectedItem().toString().equals("Aufsteigend");
+        return Objects.requireNonNull(comboBoxRichtung.getSelectedItem()).toString().equals("Aufsteigend");
     }
 
     private void initListeners() {
@@ -138,11 +129,8 @@ public class InventoryGUI extends JFrame {
             }
         });
         filterVeganButton.addActionListener(_ -> updateList(inv.filterVegan(getInputVegan())));
-        preisButton.addActionListener(_ -> {
-            updateList(InventorySystem.orderByPrice(inv.getBags(), getAsc()));
-        });
-        gewichtButton.addActionListener(_ -> {
-            updateList(InventorySystem.orderByWeight(inv.getBags(), getAsc()));
-        });
+        priceButton.addActionListener(_ -> updateList(InventorySystem.orderByPrice(inv.getBags(), getAsc())));
+        weightButton.addActionListener(_ -> updateList(InventorySystem.orderByWeight(inv.getBags(), getAsc())));
+        priceSumButton.addActionListener(_ -> textFieldPriceSum.setText(String.format("%.2f €", inv.calcSum())));
     }
 }
