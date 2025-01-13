@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class InventoryGUI extends JFrame {
+    private final InventorySystem inv;
     private JPanel myPanel;
     private JList<String> itemList;
     private JScrollPane scrollPane;
@@ -12,22 +13,20 @@ public class InventoryGUI extends JFrame {
     private JLabel colorLabel;
     private JLabel weightLabel;
     private JLabel priceLabel;
+    private JLabel priceSumLabel;
     private JTextField textFieldWeight;
     private JTextField textFieldPrice;
     private JCheckBox checkBoxVegan;
     private JButton createButton;
-    private JButton filterButton;
     private JButton filterColorButton;
     private JButton filterWeightButton;
     private JButton filterPriceButton;
     private JButton filterVeganButton;
-    private JButton gewichtButton;
-    private JButton preisButton;
+    private JButton weightButton;
+    private JButton priceButton;
     private JComboBox comboBoxRichtung;
     private JButton priceSumButton;
     private JTextField textFieldPriceSum;
-    private JLabel priceSumLabel;
-    private final InventorySystem inv;
 
     public InventoryGUI() {
         inv = new InventorySystem(); // One-time initialization of InventorySystem class
@@ -46,10 +45,10 @@ public class InventoryGUI extends JFrame {
         initListeners();
     }
 
-    // takes objects from ArrayList and displays them in the itemList on the right side.
+    // takes bags from ArrayList and displays them in the itemList on the right side.
     // must be called each time when the 'Hinzufügen' or 'Filtern' button is pressed.
-    public void updateList(ArrayList<Bag> objects) {
-        itemList.setListData(InventorySystem.toStringArray(objects));
+    private void updateList(ArrayList<Bag> bags) {
+        itemList.setListData(InventorySystem.toStringArray(bags));
     }
 
     // add bag on inventory
@@ -80,7 +79,7 @@ public class InventoryGUI extends JFrame {
 
     // parses and returns the weight specified on 'textFieldWeight'
     // throws an error message, if the weight is invalid
-    private double getInputWeight () {
+    private double getInputWeight() {
         double weight = -1;
         try {
             weight = Double.parseDouble(textFieldWeight.getText());
@@ -92,7 +91,7 @@ public class InventoryGUI extends JFrame {
 
     // parses and returns the price specified on 'textFieldPrice'
     // throws an error message, if the weight is invalid
-    private double getInputPrice () {
+    private double getInputPrice() {
         double price = -1;
         try {
             price = Double.parseDouble(textFieldPrice.getText());
@@ -103,18 +102,16 @@ public class InventoryGUI extends JFrame {
     }
 
     // returns whether 'Vegan' is selected
-    private boolean getInputVegan () {
+    private boolean getInputVegan() {
         return checkBoxVegan.isSelected();
     }
 
+    // returns whether 'Aufsteigen' is selected in comboBoxRichtung or not
     private boolean getAsc() {
-        if (comboBoxRichtung.getSelectedItem().toString().equals("Aufsteigend")) {
-            return true;
-        }
-        return false;
+        return Objects.requireNonNull(comboBoxRichtung.getSelectedItem()).toString().equals("Aufsteigend");
     }
 
-    private void initListeners () {
+    private void initListeners() {
         createButton.addActionListener(_ -> addBag());
         filterColorButton.addActionListener(_ -> {
             if (!getInputColor().isEmpty()) {
@@ -132,13 +129,8 @@ public class InventoryGUI extends JFrame {
             }
         });
         filterVeganButton.addActionListener(_ -> updateList(inv.filterVegan(getInputVegan())));
-        preisButton.addActionListener(_ -> {
-            updateList(inv.orderByPrice(inv.getBags(), getAsc()));
-        });
-        gewichtButton.addActionListener(_ -> {
-            updateList(inv.orderByWeight(inv.getBags(), getAsc()));
-        });
+        priceButton.addActionListener(_ -> updateList(InventorySystem.orderByPrice(inv.getBags(), getAsc())));
+        weightButton.addActionListener(_ -> updateList(InventorySystem.orderByWeight(inv.getBags(), getAsc())));
         priceSumButton.addActionListener(_ -> textFieldPriceSum.setText(String.format("%.2f €", inv.calcSum())));
-
     }
 }
