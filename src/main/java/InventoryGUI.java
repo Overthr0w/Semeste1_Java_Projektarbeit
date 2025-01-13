@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class InventoryGUI extends JFrame {
+    private final InventorySystem inv;
     private JPanel myPanel;
     private JList<String> itemList;
     private JScrollPane scrollPane;
@@ -27,7 +28,6 @@ public class InventoryGUI extends JFrame {
     private JButton priceSumButton;
     private JTextField textFieldPriceSum;
     private JLabel priceSumLabel;
-    private final InventorySystem inv;
 
     public InventoryGUI() {
         inv = new InventorySystem(); // One-time initialization of InventorySystem class
@@ -88,7 +88,7 @@ public class InventoryGUI extends JFrame {
 
     // parses and returns the weight specified on 'textFieldWeight'
     // throws an error message, if the weight is invalid
-    private double getInputWeight () {
+    private double getInputWeight() {
         double weight = -1;
         try {
             weight = Double.parseDouble(textFieldWeight.getText());
@@ -100,7 +100,7 @@ public class InventoryGUI extends JFrame {
 
     // parses and returns the price specified on 'textFieldPrice'
     // throws an error message, if the weight is invalid
-    private double getInputPrice () {
+    private double getInputPrice() {
         double price = -1;
         try {
             price = Double.parseDouble(textFieldPrice.getText());
@@ -111,19 +111,16 @@ public class InventoryGUI extends JFrame {
     }
 
     // returns whether 'Vegan' is selected
-    private boolean getInputVegan () {
+    private boolean getInputVegan() {
         return checkBoxVegan.isSelected();
     }
 
     // returns whether 'Aufsteigen' is selected in comboBoxRichtung or not
     private boolean getAsc() {
-        if (comboBoxRichtung.getSelectedItem().toString().equals("Aufsteigend")) {
-            return true;
-        }
-        return false;
+        return comboBoxRichtung.getSelectedItem().toString().equals("Aufsteigend");
     }
 
-    private void initListeners () {
+    private void initListeners() {
         createButton.addActionListener(_ -> addBag());
         filterColorButton.addActionListener(_ -> {
             if (!getInputColor().isEmpty()) {
@@ -142,10 +139,10 @@ public class InventoryGUI extends JFrame {
         });
         filterVeganButton.addActionListener(_ -> updateList(inv.filterVegan(getInputVegan())));
         preisButton.addActionListener(_ -> {
-            updateList(inv.orderByPrice(inv.getBags(), getAsc()));
+            updateList(InventorySystem.orderByPrice(inv.getBags(), getAsc()));
         });
         gewichtButton.addActionListener(_ -> {
-            updateList(inv.orderByWeight(inv.getBags(), getAsc()));
+            updateList(InventorySystem.orderByWeight(inv.getBags(), getAsc()));
         });
     }
 }
