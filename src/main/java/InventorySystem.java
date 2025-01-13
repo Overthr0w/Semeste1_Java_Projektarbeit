@@ -74,15 +74,15 @@ public class InventorySystem {
     }
     public ArrayList<Bag> orderByPrice (ArrayList<Bag> bags, boolean isAsc) {
         ArrayList<Bag> orderedBags = bags;
-        double k;
+        Bag buffer;
         if (isAsc) {
             for (int i = 0; i < bags.size() - 1; i++) {
                 if (bags.get(i).getPrice() < bags.get(i+1).getPrice()) {
                     continue;
                 }
-                k = bags.get(i).getPrice();
-                bags.get(i).setPrice(bags.get(i + 1).getPrice());
-                bags.get(i+1).setPrice(k);
+                buffer = bags.get(i);
+                bags.set(i, bags.get(i + 1));
+                bags.set(i+1, buffer);
                 orderByPrice(bags,isAsc);
             }
         }
@@ -91,9 +91,9 @@ public class InventorySystem {
                 if (bags.get(i).getPrice() > bags.get(i+1).getPrice()) {
                     continue;
                 }
-                k = bags.get(i).getPrice();
-                bags.get(i).setPrice(bags.get(i + 1).getPrice());
-                bags.get(i+1).setPrice(k);
+                buffer = bags.get(i);
+                bags.set(i, bags.get(i + 1));
+                bags.set(i+1, buffer);
                 orderByPrice(bags,isAsc);
             }
         }
@@ -102,15 +102,15 @@ public class InventorySystem {
 
     public ArrayList<Bag> orderByWeight (ArrayList<Bag> bags, boolean isAsc) {
         ArrayList<Bag> orderedBags = bags;
-        double k;
+        Bag buffer;
         if (isAsc) {
             for (int i = 0; i < bags.size() - 1; i++) {
                 if (bags.get(i).getWeight() < bags.get(i+1).getWeight()) {
                     continue;
                 }
-                k = bags.get(i).getWeight();
-                bags.get(i).setWeight(bags.get(i + 1).getWeight());
-                bags.get(i+1).setWeight(k);
+                buffer = bags.get(i);
+                bags.set(i, bags.get(i + 1));
+                bags.set(i+1, buffer);
                 orderByWeight(bags,isAsc);
             }
         }
@@ -119,9 +119,9 @@ public class InventorySystem {
                 if (bags.get(i).getWeight() > bags.get(i+1).getWeight()) {
                     continue;
                 }
-                k = bags.get(i).getWeight();
-                bags.get(i).setWeight(bags.get(i + 1).getWeight());
-                bags.get(i+1).setWeight(k);
+                buffer = bags.get(i);
+                bags.set(i, bags.get(i + 1));
+                bags.set(i+1, buffer);
                 orderByWeight(bags,isAsc);
             }
         }
