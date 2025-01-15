@@ -20,24 +20,24 @@ public class InventorySystem {
     public static ArrayList<Bag> orderByPrice(ArrayList<Bag> bags, boolean isAsc) {
         Bag buffer;
         if (isAsc) {
-            for (int i = 0; i < bags.size() - 1; i++) {
-                if (bags.get(i).getPrice() < bags.get(i + 1).getPrice()) {
-                    continue;
+            for(int i = 1; i < bags.size(); i++) {
+                for(int j=0; j < bags.size() - i; j++) {
+                    if(bags.get(j).getPrice() > bags.get(j+1).getPrice()) {
+                        buffer = bags.get(j);
+                        bags.set(j, bags.get(j+1));
+                        bags.set(j+1, buffer);
+                    }
                 }
-                buffer = bags.get(i);
-                bags.set(i, bags.get(i + 1));
-                bags.set(i + 1, buffer);
-                orderByPrice(bags, true);
             }
         } else {
-            for (int i = 0; i < bags.size() - 1; i++) {
-                if (bags.get(i).getPrice() > bags.get(i + 1).getPrice()) {
-                    continue;
+            for(int i = 1; i < bags.size(); i++) {
+                for(int j=0; j < bags.size() - i; j++) {
+                    if(bags.get(j).getPrice() < bags.get(j+1).getPrice()) {
+                        buffer = bags.get(j);
+                        bags.set(j, bags.get(j+1));
+                        bags.set(j+1, buffer);
+                    }
                 }
-                buffer = bags.get(i);
-                bags.set(i, bags.get(i + 1));
-                bags.set(i + 1, buffer);
-                orderByPrice(bags, false);
             }
         }
         return bags;
@@ -46,24 +46,24 @@ public class InventorySystem {
     public static ArrayList<Bag> orderByWeight(ArrayList<Bag> bags, boolean isAsc) {
         Bag buffer;
         if (isAsc) {
-            for (int i = 0; i < bags.size() - 1; i++) {
-                if (bags.get(i).getWeight() < bags.get(i + 1).getWeight()) {
-                    continue;
+            for(int i = 1; i < bags.size(); i++) {
+                for(int j=0; j < bags.size() - i; j++) {
+                    if(bags.get(j).getWeight() > bags.get(j+1).getWeight()) {
+                        buffer = bags.get(j);
+                        bags.set(j, bags.get(j+1));
+                        bags.set(j+1, buffer);
+                    }
                 }
-                buffer = bags.get(i);
-                bags.set(i, bags.get(i + 1));
-                bags.set(i + 1, buffer);
-                orderByWeight(bags, true);
             }
         } else {
-            for (int i = 0; i < bags.size() - 1; i++) {
-                if (bags.get(i).getWeight() > bags.get(i + 1).getWeight()) {
-                    continue;
+            for(int i = 1; i < bags.size(); i++) {
+                for(int j=0; j < bags.size() - i; j++) {
+                    if(bags.get(j).getWeight() < bags.get(j+1).getWeight()) {
+                        buffer = bags.get(j);
+                        bags.set(j, bags.get(j+1));
+                        bags.set(j+1, buffer);
+                    }
                 }
-                buffer = bags.get(i);
-                bags.set(i, bags.get(i + 1));
-                bags.set(i + 1, buffer);
-                orderByWeight(bags, false);
             }
         }
         return bags;
