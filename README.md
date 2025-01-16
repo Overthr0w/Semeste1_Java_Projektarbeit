@@ -1,6 +1,3 @@
-Dokumentation im README.md: Erstellen Sie eine aussagekräftige README.md-Datei, in der
-Sie Ihr Projekt, die Projektstruktur und die Nutzung Ihres Programms beschreiben.
-
 ## GUI Design und Funktionsweise des Programmes
 In der GUI kann man Taschen selbst erstellen und diese Taschen dann nach Preis oder Gewicht auf- oder absteigend sortieren. Außerdem können die Taschen nach Gesamtpreis zusammenaddiert sowie auf ein bestimmtes Attribut (isVegan, Farbe, Gewicht, Preis) gefiltert werden.
 Das Projekt verwendet den Model-View-Controller Pattern, bei dem die Klasse 'Bag' das Modell ist, InventoryGUI.form der View und InventoryGUI.java, sowie seine Hilfsklasse, InventorySystem sind Controller.
