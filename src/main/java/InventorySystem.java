@@ -1,72 +1,34 @@
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.function.Predicate;
 
 public class InventorySystem {
-    private final ArrayList<Bag> bags = new ArrayList<>();
-    private final ArrayList<Bag> listedBags = new ArrayList<>();
+    private final List<Bag> bags = new ArrayList<>();
+    private final List<Bag> listedBags = new ArrayList<>();
 
     public InventorySystem() {
         initObjekte();
     }
 
     // is used in the InventoryGUI classes updateList() method
-    public static String[] toStringArray(ArrayList<Bag> bags) {
-        String[] stringArray = new String[bags.size()];
-        for (int i = 0; i < bags.size(); i++) {
-            stringArray[i] = bags.get(i).toString();
-        }
-        return stringArray;
+    public static String[] toStringArray(List<Bag> bags) {
+        return bags.stream().map(Bag::toString).toArray(String[]::new);
     }
 
-    public static ArrayList<Bag> orderByPrice(ArrayList<Bag> bags, boolean isAsc) {
-        Bag buffer;
-        if (isAsc) {
-            for(int i = 1; i < bags.size(); i++) {
-                for(int j=0; j < bags.size() - i; j++) {
-                    if(bags.get(j).getPrice() > bags.get(j+1).getPrice()) {
-                        buffer = bags.get(j);
-                        bags.set(j, bags.get(j+1));
-                        bags.set(j+1, buffer);
-                    }
-                }
-            }
-        } else {
-            for(int i = 1; i < bags.size(); i++) {
-                for(int j=0; j < bags.size() - i; j++) {
-                    if(bags.get(j).getPrice() < bags.get(j+1).getPrice()) {
-                        buffer = bags.get(j);
-                        bags.set(j, bags.get(j+1));
-                        bags.set(j+1, buffer);
-                    }
-                }
-            }
-        }
-        return bags;
+    public static List<Bag> orderByPrice(List<Bag> bags, boolean isAsc) {
+        return bags.stream().sorted(isAsc
+                        ? Comparator.comparing(Bag::price)
+                        : Comparator.comparing(Bag::price).reversed())
+                .toList();
     }
 
-    public static ArrayList<Bag> orderByWeight(ArrayList<Bag> bags, boolean isAsc) {
-        Bag buffer;
-        if (isAsc) {
-            for(int i = 1; i < bags.size(); i++) {
-                for(int j=0; j < bags.size() - i; j++) {
-                    if(bags.get(j).getWeight() > bags.get(j+1).getWeight()) {
-                        buffer = bags.get(j);
-                        bags.set(j, bags.get(j+1));
-                        bags.set(j+1, buffer);
-                    }
-                }
-            }
-        } else {
-            for(int i = 1; i < bags.size(); i++) {
-                for(int j=0; j < bags.size() - i; j++) {
-                    if(bags.get(j).getWeight() < bags.get(j+1).getWeight()) {
-                        buffer = bags.get(j);
-                        bags.set(j, bags.get(j+1));
-                        bags.set(j+1, buffer);
-                    }
-                }
-            }
-        }
-        return bags;
+    public static List<Bag> orderByWeight(List<Bag> bags, boolean isAsc) {
+        return bags.stream().sorted(isAsc
+                        ? Comparator.comparing(Bag::weight)
+                        : Comparator.comparing(Bag::weight).reversed())
+                .toList();
     }
 
     public void initObjekte() {
@@ -76,49 +38,27 @@ public class InventorySystem {
         listedBags.addAll(bags);
     }
 
+    private List<Bag> filterAndSet(Predicate<Bag> predicate) {
+        List<Bag> filtered = bags.stream().filter(predicate).toList();
+        setSelectedBags(filtered);
+        return filtered;
+    }
+
     // returns an array list containing bags that have the specified color
-    public ArrayList<Bag> filterColor(String color) {
-        ArrayList<Bag> filteredBags = new ArrayList<>();
-        for (Bag b : bags) {
-            if (b.getColor().equals(color)) {
-                filteredBags.add(b);
-            }
-        }
-        this.setSelectedBags(filteredBags);
-        return filteredBags;
+    public List<Bag> filterColor(String color) {
+        return filterAndSet(b -> b.color().equals(color));
     }
 
-    public ArrayList<Bag> filterWeight(Double weight) {
-        ArrayList<Bag> filteredBags = new ArrayList<>();
-        for (Bag a : bags) {
-            if (a.getWeight() == weight) {
-                filteredBags.add(a);
-            }
-        }
-        this.setSelectedBags(filteredBags);
-        return filteredBags;
+    public List<Bag> filterWeight(Double weight) {
+        return filterAndSet(b -> Double.compare(b.weight(), weight) == 0.0);
     }
 
-    public ArrayList<Bag> filterVegan(Boolean isVegan) {
-        ArrayList<Bag> filteredBags = new ArrayList<>();
-        for (Bag c : bags) {
-            if (c.isVegan() == isVegan) {
-                filteredBags.add(c);
-            }
-        }
-        this.setSelectedBags(filteredBags);
-        return filteredBags;
+    public List<Bag> filterVegan(Boolean isVegan) {
+        return filterAndSet(b -> b.isVegan() == isVegan);
     }
 
-    public ArrayList<Bag> filterPrice(Double price) {
-        ArrayList<Bag> filteredBags = new ArrayList<>();
-        for (Bag a : bags) {
-            if (a.getPrice() == price) {
-                filteredBags.add(a);
-            }
-        }
-        this.setSelectedBags(filteredBags);
-        return filteredBags;
+    public List<Bag> filterPrice(Double price) {
+        return filterAndSet(b -> Double.compare(b.price(), price) == 0.0);
     }
 
     // Setter and Getter methods
@@ -130,27 +70,21 @@ public class InventorySystem {
         return bags.remove(bag);
     }
 
-    public ArrayList<Bag> getBags() {
-        return bags;
+    public List<Bag> getBags() {
+        return Collections.unmodifiableList(bags);
     }
 
-    public ArrayList<Bag> getSelectedBags() {
-        return listedBags;
+    public List<Bag> getSelectedBags() {
+        return Collections.unmodifiableList(listedBags);
     }
 
-    public void setSelectedBags(ArrayList<Bag> listedBags) {
+    public void setSelectedBags(List<Bag> listedBags) {
         this.listedBags.clear();
         this.listedBags.addAll(listedBags);
     }
 
     public double calcSum() {
-        double sum = 0;
-        for (Bag b : this.listedBags) {
-            sum += b.getPrice();
-        }
-        return sum;
+        return this.listedBags.stream().mapToDouble(Bag::price).sum();
     }
-
-
 }
 
