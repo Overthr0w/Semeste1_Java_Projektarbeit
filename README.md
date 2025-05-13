@@ -1,6 +1,3 @@
-Dokumentation im README.md: Erstellen Sie eine aussagekräftige README.md-Datei, in der
-Sie Ihr Projekt, die Projektstruktur und die Nutzung Ihres Programms beschreiben.
-
 ## GUI Design und Funktionsweise des Programmes
 In der GUI kann man Taschen selbst erstellen und diese Taschen dann nach Preis oder Gewicht auf- oder absteigend sortieren. Außerdem können die Taschen nach Gesamtpreis zusammenaddiert sowie auf ein bestimmtes Attribut (isVegan, Farbe, Gewicht, Preis) gefiltert werden.
 Das Projekt verwendet den Model-View-Controller Pattern, bei dem die Klasse 'Bag' das Modell ist, InventoryGUI.form der View und InventoryGUI.java, sowie seine Hilfsklasse, InventorySystem sind Controller.
@@ -10,11 +7,10 @@ Item, das vom InventorySystem verwaltet wird.
 
 [![](https://mermaid.ink/img/pako:eNplkcFuwyAMhl_F8inRuhfIsdvukzZ10sTFBY-gJTgC0mqq-u4jgVZadkHw_T-_bbigFsPYoR4oxmdHNtCovHGBdXLiYf-u_KrBnixclAd4BCPzcWCYgtNcyFsKzlvQMkj44zmzs30q6CgyMHlw8cCW_AIfIHJ6XXKacqGFkzhTJHuT2pp2xx9r6obHO_8flbW1ZlN72GhPS99NGWLTQZHaOmHBScppg-tcmdYqyl9VXnCHI4eRnMkPvT6hwtTzyAq7vDUUvhVmb_bRnLN_vMYuhZl3GGS2PXZfNMR8midDiesv3SwT-U-RcWN6MS5JqPD6Cw8dpjE?type=png)](https://mermaid.live/edit#pako:eNplkcFuwyAMhl_F8inRuhfIsdvukzZ10sTFBY-gJTgC0mqq-u4jgVZadkHw_T-_bbigFsPYoR4oxmdHNtCovHGBdXLiYf-u_KrBnixclAd4BCPzcWCYgtNcyFsKzlvQMkj44zmzs30q6CgyMHlw8cCW_AIfIHJ6XXKacqGFkzhTJHuT2pp2xx9r6obHO_8flbW1ZlN72GhPS99NGWLTQZHaOmHBScppg-tcmdYqyl9VXnCHI4eRnMkPvT6hwtTzyAq7vDUUvhVmb_bRnLN_vMYuhZl3GGS2PXZfNMR8midDiesv3SwT-U-RcWN6MS5JqPD6Cw8dpjE)
 ### InventorySystem:
-Das `InventorySystem` beherbergt die ArrayListe der Taschen `bags` sowie Beispielobjekte. 
+Die `InventorySystem` Klasse beherbergt die ArrayListe der `Bag` Objekte. 
 Sie kümmert sich primär um die Verwaltung des Inventars. 
 In der Klasse sind die Methoden enthalten, mit denen man die Taschen nach ihren Attributen filtern kann. 
-Außerdem beinhaltet sie Methoden, mit denen man die Taschen nach Preis und Gewicht sortieren kann, 
-sowie eine Methode, welche die Summe der Preise der Taschen berechnet.
+Außerdem beinhaltet sie Methoden, mit denen man die Taschen nach Preis und Gewicht sortieren kann, sowie eine Methode, welche die Summe der Preise der Taschen berechnet.
 
 [![](https://mermaid.ink/img/pako:eNqVUstqwzAQ_BWhk03dH_CtbnooFFpwaaF1D2trI6vRI6zlgAnJt1exnELcJNCDQd4Zzcxqd8sbJ5DnvNHQdQsFksBUVijCxitnWfFa2RFjj3aD1jsayqHzaNi2sozdsjsiGJ5U5_cFyD2rQXZnAR1OKIoJvmEN6KbsTZIy4fpaY6wqq_xz_Y0rjwHZOCVifam0R3pHJVufLMYL6cwhEkEcPJLSk7Iym7QzVjunEeyx8Ff6hVSDV5Ul-kP65DwaVd5Qgk2KaHaeSGjcBg8Zw5ceg0XMkUAqhqnN09u_PVzzv3fa0dT8xS5K1GG4cRYXuvEuaozYLEjKIvb5dRI6PuC_MnezLHOfOKNdFV6HZ9wgGVAi7Oq4eRX3LRqseB6OAmhV8cANPOhD-sE2PPfUY8bJ9bLl-RJ0F_76tQCP06IfKWuwH86ZGelBqLDuU3H3A19SHgI?type=png)](https://mermaid.live/edit#pako:eNqVUstqwzAQ_BWhk03dH_CtbnooFFpwaaF1D2trI6vRI6zlgAnJt1exnELcJNCDQd4Zzcxqd8sbJ5DnvNHQdQsFksBUVijCxitnWfFa2RFjj3aD1jsayqHzaNi2sozdsjsiGJ5U5_cFyD2rQXZnAR1OKIoJvmEN6KbsTZIy4fpaY6wqq_xz_Y0rjwHZOCVifam0R3pHJVufLMYL6cwhEkEcPJLSk7Iym7QzVjunEeyx8Ff6hVSDV5Ul-kP65DwaVd5Qgk2KaHaeSGjcBg8Zw5ceg0XMkUAqhqnN09u_PVzzv3fa0dT8xS5K1GG4cRYXuvEuaozYLEjKIvb5dRI6PuC_MnezLHOfOKNdFV6HZ9wgGVAi7Oq4eRX3LRqseB6OAmhV8cANPOhD-sE2PPfUY8bJ9bLl-RJ0F_76tQCP06IfKWuwH86ZGelBqLDuU3H3A19SHgI)
 ### InventoryGUI:
